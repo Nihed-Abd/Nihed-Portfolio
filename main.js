@@ -1,5 +1,5 @@
 import './css/style.css';
-import * as THREE from './node_modules';
+import * as THREE from './node_modules/three/src/Three';
 import * as dat from 'dat.gui';
 import gsap from 'gsap';
 import Stats from 'three/addons/libs/stats.module.js';
