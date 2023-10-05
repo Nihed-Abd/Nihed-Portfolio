@@ -26,10 +26,11 @@ let clipNames = [
   'fan_rotation.003',
   'fan_rotation.004',
 ];
+
 let projects = [
-  {
+  {    
     image: 'textures/ecoleSanaProject.png',
-    url: 'ecolesana.netlify.app',
+    url: 'https://ecolesana.netlify.app',
   },
   {
     image: 'textures/dashbordElWafa.png',
@@ -37,6 +38,9 @@ let projects = [
   },
   
 ];
+
+
+
 let aboutCameraPos = {
   x: 0.12,
   y: 0.2,
@@ -659,11 +663,65 @@ function init3DWorldClickListeners() {
   const raycaster = new THREE.Raycaster();
   let intersects;
 
-  window.addEventListener('click', function (e) {
-    // store value set to prevent multi time update in foreach loop
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+  // window.addEventListener('click', function (e) {
+  //   // store value set to prevent multi time update in foreach loop
+  //   const newTheme = theme === 'light' ? 'dark' : 'light';
 
-    // prevent about focus on button click which are positioned above book in mobile view
+  //   // prevent about focus on button click which are positioned above book in mobile view
+  //   const closeBtn = document.getElementById('close-btn');
+  //   const projectsBtn = document.getElementById('projects-menu');
+  //   if (
+  //     e.target === closeBtn ||
+  //     closeBtn.contains(e.target) ||
+  //     e.target === projectsBtn ||
+  //     projectsBtn.contains(e.target)
+  //   ) {
+  //     return false;
+  //   }
+  //   intersects.forEach((intersects)=>{
+  //     if (intersects.object.name==='project'){
+  //       if (intersects.object.userData.url){
+  //         window.open(intersects.object.userData.url, '_blank');
+  //       }
+  //     }
+  //   })
+    
+
+  //   mousePosition.x = (e.clientX / window.innerWidth) * 2 - 1;
+  //   mousePosition.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  //   raycaster.setFromCamera(mousePosition, camera);
+  //   intersects = raycaster.intersectObjects(scene.children);
+  //   intersects.forEach((intersect) => {
+  //     if (intersect.object.name === 'project') {
+  //       intersect.object.userData.url &&
+  //         window.open(intersect.object.userData.url);
+  //     }
+
+  //     if (
+  //       intersect.object.name === 'Book' ||
+  //       intersect.object.name === 'Book001'
+  //     ) {
+  //       disableOrbitControls();
+  //       cameraToAbout();
+  //       gsap.delayedCall(1.5, enableCloseBtn);
+  //     }
+
+  //     if (
+  //       intersect.object.name === 'SwitchBoard' ||
+  //       intersect.object.name === 'Switch'
+  //     ) {
+  //       theme = newTheme;
+  //       switchTheme(theme);
+  //     }
+      
+  //   });
+    
+  // });
+  window.addEventListener('click', function (e) {
+    // store value set to prevent multi-time update in the foreach loop
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+  
+    // prevent about focus on button click which are positioned above the book in mobile view
     const closeBtn = document.getElementById('close-btn');
     const projectsBtn = document.getElementById('projects-menu');
     if (
@@ -674,35 +732,29 @@ function init3DWorldClickListeners() {
     ) {
       return false;
     }
-
+  
+    // Now, you need to define and set up the raycaster and intersects here
+    const mousePosition = new THREE.Vector2();
+    const raycaster = new THREE.Raycaster();
+    let intersects;
+  
+    // Set up the mouse position based on the click event
     mousePosition.x = (e.clientX / window.innerWidth) * 2 - 1;
     mousePosition.y = -(e.clientY / window.innerHeight) * 2 + 1;
     raycaster.setFromCamera(mousePosition, camera);
     intersects = raycaster.intersectObjects(scene.children);
+  
     intersects.forEach((intersect) => {
       if (intersect.object.name === 'project') {
-        intersect.object.userData.url &&
-          window.open(intersect.object.userData.url);
+        if (intersect.object.userData.url) {
+          window.open(intersect.object.userData.url, '_blank');
+        }
       }
-
-      if (
-        intersect.object.name === 'Book' ||
-        intersect.object.name === 'Book001'
-      ) {
-        disableOrbitControls();
-        cameraToAbout();
-        gsap.delayedCall(1.5, enableCloseBtn);
-      }
-
-      if (
-        intersect.object.name === 'SwitchBoard' ||
-        intersect.object.name === 'Switch'
-      ) {
-        theme = newTheme;
-        switchTheme(theme);
-      }
+  
+      // ... (other conditions and actions)
     });
   });
+  
 }
 
 // RESPONSIVE
