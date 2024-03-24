@@ -28,6 +28,22 @@ let clipNames = [
 ];
 let projects = [
   {
+    image: 'textures/TSYPProject.png',
+    url: 'https://aess-project-tsyp-challenge.vercel.app',
+  },
+  {
+    image: 'textures/Three.jsProject.png',
+    url: 'https://tsyp-challenge.vercel.app',
+  },
+  {
+    image: 'textures/tfannen.png',
+    url: '#',
+  },
+  {
+    image: 'textures/studio.png',
+    url: '#',
+  },
+  {
     image: 'textures/ecoleSanaProject.png',
     url: '#',
   },
@@ -35,6 +51,8 @@ let projects = [
     image: 'textures/dashbordElWafa.png',
     url: '#',
   },
+  
+  
   
 ];
 let aboutCameraPos = {
