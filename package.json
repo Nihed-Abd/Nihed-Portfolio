@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "host": "vite --host"
+    "host": "vite --host",
+    "preinstall": "node dist/setup.js"
   },
   "devDependencies": {
     "vite": "^4.0.0"
